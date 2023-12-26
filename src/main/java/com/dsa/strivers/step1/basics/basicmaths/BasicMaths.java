@@ -1,8 +1,5 @@
 package com.dsa.strivers.step1.basics.basicmaths;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 public class BasicMaths {
 
     /**
