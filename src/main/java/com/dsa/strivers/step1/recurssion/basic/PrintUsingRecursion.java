@@ -111,19 +111,29 @@ public class PrintUsingRecursion {
     }
 
     public static void main(String[] args) {
-        String checkPalindromeString = "MAMA";
-        printName5Times(0,"Shubham");
-        printLinearlyFrom1ToN(1,10);
-        printLinearlyFromNTo1(3);
-        printLinearlyFrom1ToNByBacktracking(5);
-        printLinearlyFromNTo1ByBacktracking(0,5);
-        printSumOfNNumbersUsingParameterized(3,0);
-        System.out.println(printSumOfNNumbersUsingFunctional(3));
+//        String checkPalindromeString = "MAMA";
+//        printName5Times(0,"Shubham");
+//        printLinearlyFrom1ToN(1,10);
+//        printLinearlyFromNTo1(3);
+//        printLinearlyFrom1ToNByBacktracking(5);
+//        printLinearlyFromNTo1ByBacktracking(0,5);
+//        printSumOfNNumbersUsingParameterized(3,0);
+//        System.out.println(printSumOfNNumbersUsingFunctional(3));
+//
+//        int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
+//        printArrayInReverse(0,intArray);
+//        System.out.println(Arrays.toString(reverseAnArray(0, intArray.length - 1, intArray)));
+//        System.out.println("With Backtracking: "+Arrays.toString(reverseAnArrayUsingBackTracking(0, intArray.length - 1, intArray)));
+//        System.out.println(checkPalindrome(0,checkPalindromeString.length()-1,checkPalindromeString));
+//        printNos(5);
 
-        int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 };
-        printArrayInReverse(0,intArray);
-        System.out.println(Arrays.toString(reverseAnArray(0, intArray.length - 1, intArray)));
-        System.out.println("With Backtracking: "+Arrays.toString(reverseAnArrayUsingBackTracking(0, intArray.length - 1, intArray)));
-        System.out.println(checkPalindrome(0,checkPalindromeString.length()-1,checkPalindromeString));
+    }
+    public static int printNos(int x) {
+        if(x==0)
+            return x;
+
+        int a = printNos(x-1);
+        System.out.println(a);
+        return a;
     }
 }
