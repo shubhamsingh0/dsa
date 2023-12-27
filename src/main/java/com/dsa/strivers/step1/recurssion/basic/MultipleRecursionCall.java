@@ -40,7 +40,8 @@ static int[] intArray = new int[]{ 1,2,3 };
         }
         else {
             if (arr[n]==0) // checks if we already calculated fibonacci for f(n) as arr[n] will not be 0 in that case, and calculate only if arr[n] for f(n) is zero.
-                // For f(0) and f(1) flow will not come inside else block
+                // For f(0) and f(1) flow will not come inside else block. Unknowingly I implemented Memoization. LOL. technique
+                // of storing previously computed values to avoid redundant calculations.
                 arr[n] = fib(n - 1, arr) + fib(n - 2, arr);
         }
         return arr[n];
