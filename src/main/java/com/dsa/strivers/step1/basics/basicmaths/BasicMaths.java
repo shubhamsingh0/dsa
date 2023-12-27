@@ -243,10 +243,10 @@ public class BasicMaths {
         int limit = (int) Math.sqrt(n);
         for(int i=1;i<=limit;i++) {
             if(n%i==0) {
-                if (i != n / i)
+                if (i != n / i) // for non-perfect square case so that factors don't get repeated and also mention both factors at same time
                     System.out.print(i + " " + n / i + " ");
                 else
-                    System.out.print(i);
+                    System.out.print(i); // for perfect square, print only once
             }
         }
     }

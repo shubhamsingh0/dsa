@@ -78,7 +78,13 @@ public class PrintUsingRecursion {
     }
 
 
-
+    /**
+     *
+     * For reversing an array we must need 3 parameters startIndex, endIndex and array itself. for int[] reverseArray(int arraySize, int[] array)
+     * convert it to int[] reverseArrayTemp(int startIndex, int endIndex, int[] arr) then use normal swap and increment and decrement till start index crosses
+     * or equals the end index [Break Condition].
+     *
+     */
     public static int[] reverseAnArray(int i, int j, int[] array) {
         if(i>=j)
             return array;
@@ -104,7 +110,7 @@ public class PrintUsingRecursion {
 
     public static boolean checkPalindrome(int i, int j, String str) {
         if(i>=j)
-            return true;
+            return str.charAt(i) == str.charAt(j);
         if(str.charAt(i)!=str.charAt(j))
             return false;
         return checkPalindrome(i+1,j-1,str);
