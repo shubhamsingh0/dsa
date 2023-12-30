@@ -56,9 +56,55 @@ public class SortingAdvance {
 
     }
 
+    public static void quickSort(int[] arr, int low, int high) {
+        if (low < high) // checking if the range > 1
+        {
+            int partitionIndex = getPartitionIndex(arr, low, high);
+
+            quickSort(arr, low, partitionIndex - 1);
+            quickSort(arr, partitionIndex + 1, high);
+
+        }
+    }
+
+
+    private static int getPartitionIndex(int[] arr, int low, int high) {
+        int i = low;
+        int j = high;
+
+        int pivot = arr[low];
+
+        while (i < j) {
+            // get the first element greater than pivot from left
+            while(arr[i]<=pivot && i<=high-1) {
+                i++;
+            }
+            // get the first element less than pivot from right
+            while(arr[j]>pivot && j>=low+1) {
+                j--;
+            }
+
+            if(i<j) { // swap until j has not crossed i, once j crosses i that jth index is the partiotionIndex
+                int temp = arr[j];
+                arr[j] = arr[i];
+                arr[i] = temp;
+            }
+        }
+        // we need to have j value to swap with pivot as it is the correct position of the pivot. Swap pivot with partition index 'j' element
+        int temp = arr[low];
+        arr[low] = arr[j];
+        arr[j] = temp;
+        return j;
+    }
+
+
     public static void main(String[] args) {
         int[] arr = {2, 13, 4, 1, 3, 6, 28, 2};
+
         mergeSort(arr, 0, 7);
+        Arrays.stream(arr).forEach(System.out::println);
+
+        quickSort(arr, 0, 7);
         Arrays.stream(arr).forEach(System.out::println);
 
     }

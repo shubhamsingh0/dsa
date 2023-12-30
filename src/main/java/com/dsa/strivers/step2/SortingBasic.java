@@ -161,12 +161,81 @@ public class SortingBasic {
         }
         return arr;
     }
+
+    /**
+     *
+     * not optimized bubble sort using recursion
+     */
+    public static void bubbleSortUsingRecursion(int[] arr, int i, int j) {
+       if(j>= arr.length-i) {
+           return;
+       }
+       if(arr[j-1]>arr[j]) {
+           int temp = arr[j-1];
+           arr[j-1] = arr[j];
+           arr[j] = temp;
+       }
+       if(j == arr.length-i-1)
+            bubbleSortUsingRecursion(arr, i+1, 1); // if 'j' reaches last index, increment 'i' by 1, think in terms of inner for loop
+       else
+           bubbleSortUsingRecursion(arr, i, j+1); // if 'j' is still to reach last index, 'i' will be same throughout till 'j' reaches last index,
+                                                    // think in terms of inner for loop
+    }
+
+
+    /**
+     *
+     * In the iterative method, we usually select a range(using a loop), and for each range, we repeatedly
+     * swap(using another loop) the adjacent elements(if arr[i] > arr[i+1]) until the maximum element in
+     * that range reaches the end.
+     * In the recursive approach, we will just select the range recursively instead of using any loop.
+     * This is the only change we will do the recursive bubble sort algorithm and the rest of the part
+     * will be completely the same as it was in the case of iterative bubble sort.optimized bubble sort
+     * using recursion
+     */
+    public static void bubbleSortUsingRecursionOptimized(int[] arr, int n) {
+        if(n == 1) {
+            return;
+        }
+        for(int j=0;j<n-1;j++) {
+            if(arr[j]>arr[j+1]) {
+                int temp = arr[j+1];
+                arr[j+1] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        bubbleSortUsingRecursionOptimized(arr, n-1); // we control the range, and range reduced after recursion:
+    }
+
+    /**
+     * Its all about determining inner loop range
+     *
+     */
+    public static void insertionSortUsingRecursion(int[] arr, int n) {
+
+        if(n<=0)
+            return;
+
+        int j= arr.length-n;
+            while(j>0 && arr[j]<arr[j-1]) {
+                int temp = arr[j];
+                arr[j] = arr[j-1];
+                arr[j-1] = temp;
+                j--;
+            }
+        insertionSortUsingRecursion(arr,n-1);
+    }
     public static void main(String[] args) {
-        Arrays.stream(selectionSort(new int[] {2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
-        Arrays.stream(bubbleSort(new int[]{2, 13, 4, 1, 3, 6, 28, 2})).forEach(System.out::println);
-        Arrays.stream(bubbleSort(new int[]{1, 2, 3, 4, 5, 6, 7, 8})).forEach(System.out::println);
-        Arrays.stream(bubbleSortMyVersion(new int[]{2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
-        Arrays.stream(insertionSort(new int[]{2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
-        Arrays.stream(insertionSortWhileLoopApproach(new int[]{2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
+//        Arrays.stream(selectionSort(new int[] {2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
+//        Arrays.stream(bubbleSort(new int[]{2, 13, 4, 1, 3, 6, 28, 2})).forEach(System.out::println);
+//        Arrays.stream(bubbleSort(new int[] {1, 2, 3, 4, 5, 6, 7, 8})).forEach(System.out::println);
+//        Arrays.stream(bubbleSortMyVersion(new int[]{2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
+//        Arrays.stream(insertionSort(new int[]{2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
+//        Arrays.stream(insertionSortWhileLoopApproach(new int[]{2, 13,4, 1, 3, 6, 28, 2})).forEach(System.out::println);
+        int[] arr = {2, 13, 4, 1, 3, 6, 28, 2};
+//        bubbleSortUsingRecursion(arr,0,1);
+//        bubbleSortUsingRecursionOptimized(arr, arr.length);
+        insertionSortUsingRecursion(arr, arr.length);
+        Arrays.stream(arr).forEach(System.out::println);
     }
 }
